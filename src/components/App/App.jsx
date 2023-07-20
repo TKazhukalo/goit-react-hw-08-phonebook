@@ -1,40 +1,33 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Container } from './App.styled';
-import { ContactsList } from 'components/ContactsList/ContactsList';
-import { Filter } from 'components/Filter/Filter';
-import { Form } from 'components/Form/Form';
-import { Section } from 'components/Section/Section';
-import { selectContacts, selectError, selectIsLoading, selectStatusFilters } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import Loader from 'components/Loader/Loader';
+import { Layout } from "components/Layout";
+import { useAuth } from "hooks/useAuth";
+import { useEffect } from "react";
+import { lazy } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes } from 'react-router-dom';
+import { refreshUser } from "redux/auth/operations";
+
+const HomePage = lazy(() => import('../pages/Home/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const value = useSelector(selectStatusFilters);
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+    const dispatch = useDispatch();
+    const { isRefreshing } = useAuth();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
-  return (
-    <Container>
-      <Section title="Phonebook">
-        <Form />
-      </Section>
-      <Section title="Contacts">
-        {contacts.length > 0 ? (
-          <Filter value={value}/>
-        ) : (
-          <p>Введіть дані</p>
-        )}
-        {isLoading && !error && <Loader />}
-{/*{isLoading && !error && <b>Request in progress...</b>}*/}
-        <ContactsList />
-      </Section>
-    </Container>
-  );
-};
+    useEffect(() => {
+        dispatch(refreshUser());
+    }, [dispatch]);
+    return isRefreshing ? (
+         <b>Refreshing user...</b>
+  ) : (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/contacts" element={<ContactsPage />} />
+            </Route>
+        </Routes>
+    )
+}
