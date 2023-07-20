@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchContacts } from "redux/contacts/operations";
-import { selectIsLoggedIn } from "redux/contacts/selectors";
+//import { selectIsLoggedIn } from "redux/contacts/selectors";
 
 export default function Contacts() {
     const dispatch = useDispatch();
-    const isLoading = useSelector(selectIsLoggedIn);
+   // const isLoading = useSelector(selectIsLoggedIn);
 
     useEffect(() => {
         dispatch(fetchContacts());

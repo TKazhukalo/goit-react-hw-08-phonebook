@@ -2,12 +2,12 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 //axios.defaults.baseURL = "https://64aeff26c85640541d4e012b.mockapi.io";
-const setAuthHeader = contact => {
-  axios.defaults.headers.common.Authorization = `Bearer ${contact}`;
-};
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+// const setAuthHeader = contact => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${contact}`;
+// };
+// const clearAuthHeader = () => {
+//   axios.defaults.headers.common.Authorization = '';
+// };
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => { }
