@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux"
-//import { login } from "redux/contacts/operations";
 import { LabelForm, LogForm } from "./LoginForm.styled";
 import { logIn } from "redux/auth/operations";
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
     const handleSubmit = e => {
-        e.preventdefault();
+        e.preventDefault();
         const form = e.currentTarget;
         dispatch(
             logIn({

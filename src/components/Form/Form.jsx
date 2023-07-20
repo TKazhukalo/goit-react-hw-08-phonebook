@@ -3,8 +3,8 @@ import { nanoid } from "nanoid";
 import { FormContainer, Input, Label } from "./Form.styled";
 import { Button } from "components/ContactsList/ContactsList.styled";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts} from 'redux/contacts/selectors';
-import { addContact } from 'redux/contacts/operations';
+import { selectContacts} from '../../redux/contacts/selectors';
+import { addContact } from '../../redux/contacts/operations';
 
 export const Form=()=>{
 const nameId = nanoid();

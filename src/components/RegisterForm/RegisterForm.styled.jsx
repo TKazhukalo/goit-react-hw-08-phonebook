@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const RegisterForm=styled.form`
+export const RegisterForms=styled.form`
     width: 320px;
 `
 export const RegisterLabel=styled.label`

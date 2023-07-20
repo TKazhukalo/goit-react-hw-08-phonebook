@@ -1,5 +1,5 @@
-import { register } from "redux/contacts/operations";
-import { logIn, logOut, refreshUser } from "./operations";
+import { register } from "../auth/operations";
+import { logIn, logOut, refreshUser } from "../auth/operations";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -8,6 +8,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isLoading:false,
 }
 
 const authSlice = createSlice({
@@ -16,18 +17,25 @@ const authSlice = createSlice({
     extraReducers: {
         [register.fulfilled](state, action) {
             state.user = action.payload.user;
-            state.contact = action.payload.contact;
+            state.token = action.payload.token;
             state.isLoggedIn = true;
+            //state.isLoading = false;
         },
         [logIn.fulfilled](state, action) {
             state.user = action.payload.user;
-            state.contact = action.payload.contact;
+            state.token = action.payload.token;
             state.isLoggedIn = true;
         },
         [logOut.fulfilled](state, action) {
             state.user =  { name: null, email: null };
-            state.contact = null;
+            state.token = null;
             state.isLoggedIn = false;
+        },
+        [logOut.pending](state) {
+            state.isLoading = true;
+        },
+        [logOut.rejected](state, action) {
+            state.isLoading = false;  
         },
         [refreshUser.pending](state) {
             state.isRefreshing = true;
