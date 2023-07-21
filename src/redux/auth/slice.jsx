@@ -13,13 +13,17 @@ const initialState = {
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState,
+    initialState,
     extraReducers: {
+       
         [register.fulfilled](state, action) {
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
             //state.isLoading = false;
+        },
+        [register.rejected](state, action) {
+            
         },
         [logIn.fulfilled](state, action) {
             state.user = action.payload.user;
@@ -27,7 +31,7 @@ const authSlice = createSlice({
             state.isLoggedIn = true;
         },
         [logOut.fulfilled](state, action) {
-            state.user =  { name: null, email: null };
+            state.user = { name: null, email: null };
             state.token = null;
             state.isLoggedIn = false;
         },
@@ -35,7 +39,7 @@ const authSlice = createSlice({
             state.isLoading = true;
         },
         [logOut.rejected](state, action) {
-            state.isLoading = false;  
+            state.isLoading = false;
         },
         [refreshUser.pending](state) {
             state.isRefreshing = true;
@@ -48,6 +52,30 @@ const authSlice = createSlice({
         [refreshUser.rejected](state) {
             state.isRefreshing = false;
         },
-  },
+    },
 });
 export const authReducer = authSlice.reducer;
+
+ // extraReducers: builder =>
+        //     builder
+        //         .addCase(register.pending, (state, action) => state)
+        //         .addCase(register.fulfilled, (state, action) => {
+        //             state.user = action.payload.user;
+        //             state.token = action.payload.token;
+        //             state.isLoggedIn = true;
+        //         })
+        //         .addCase(register.rejected, (state, action) => state)
+        //         .addCase(logIn.fulfilled, (state, action) => {
+        //             state.user = action.payload.user;
+        //             state.token = action.payload.token;
+        //             state.isLoggedIn = false;
+        //         })
+        //         .addCase(logOut.fulfilled, state => {
+        //             state.user = { name: null, email: null };
+        //             state.token = null;
+        //             state.isLoggedIn = false;
+        //         })
+        //         .addCase(refreshUser.fulfilled, (state, action) => {
+        //             state.user = action.payload;
+        //             state.isLoggedIn = true;
+        //         }),

@@ -15,8 +15,9 @@ export default function Contacts() {
         <>
             <Helmet>
                 <title> Your contacts</title>
-                <ContactForm />
             </Helmet>
+                <ContactForm />
+           
             
         </>
     )

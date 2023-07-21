@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://TKazhukalo.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
+    "@chakra-ui/react": "^2.8.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.5",
@@ -11,6 +13,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "framer-motion": "^10.13.0",
     "hooks": "^0.3.2",
     "nanoid": "^4.0.2",
     "notiflix": "^3.2.6",
