@@ -1,4 +1,4 @@
-import { Layout } from "../Layout";
+import { Layout } from "../Layout/Layout";
 import { useAuth } from "../../hooks/useAuth";
 import { useEffect } from "react";
 import { lazy } from "react";
@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import { refreshUser } from "../../redux/auth/operations";
 import { RestrictedRoute } from "../../RestrictedRoute";
 import { PrivateRoute } from "PrivateRoute";
+import { ContainerApp } from "./App.styled";
 
 const HomePage = lazy(() => import('../pages/Home/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -22,7 +23,8 @@ export const App = () => {
     }, [dispatch]);
     return isRefreshing ? (
          <b>Refreshing user data...</b>
-  ) : (
+    ) : (
+    <ContainerApp>
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
@@ -42,6 +44,7 @@ export const App = () => {
                     />    
             </Route>
       
-        </Routes>
+                </Routes>
+    </ContainerApp>
     )
 }

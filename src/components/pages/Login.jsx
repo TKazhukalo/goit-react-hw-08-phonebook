@@ -10,4 +10,4 @@ export default function Login() {
             <LoginForm />
         </div>
     );
-}
+};

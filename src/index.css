@@ -1,14 +1,15 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
-  margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    margin-top: 20px;
-    background-color: azure;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+ background: rgb(235,255,37);
+background: linear-gradient(77deg, rgba(235,255,37,0.5326331216080182) 10%, rgba(110,233,242,0.921988863904937) 100%);
 }
 
 code {

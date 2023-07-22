@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
-import { RegisterForms, RegisterLabel } from "./RegisterForm.styled";
+import { RegisterForms, RegisterInput, RegisterLabel } from "./RegisterForm.styled";
+import { ButtonMenu } from "components/UserMenu/UserMenu.styled";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const RegisterForm = () => {
     <RegisterForms  onSubmit={handleSubmit} autoComplete="off">
       <RegisterLabel>
         Username
-              <input
+              <RegisterInput
                   type="text"
                   name="name"
                   placeholder="Введіть ім'я"
@@ -30,7 +31,7 @@ export const RegisterForm = () => {
       </RegisterLabel>
       <RegisterLabel>
         Email
-              <input
+              <RegisterInput
                   type="email"
                   name="email"
                   placeholder="Введіть e-mail"
@@ -38,13 +39,13 @@ export const RegisterForm = () => {
       </RegisterLabel>
       <RegisterLabel>
         Password
-              <input
+              <RegisterInput
                   type="password"
                   name="password"
                   placeholder="Введіть пароль"
               />
       </RegisterLabel>
-      <button type="submit">Register</button>
+      <ButtonMenu type="submit">Register</ButtonMenu>
     </RegisterForms>
   );
 };
