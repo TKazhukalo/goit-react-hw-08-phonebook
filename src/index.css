@@ -8,8 +8,15 @@ body {
    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
- background: rgb(235,255,37);
-background: linear-gradient(77deg, rgba(235,255,37,0.5326331216080182) 10%, rgba(110,233,242,0.921988863904937) 100%);
+background: rgb(235,255,37);
+background: -moz-linear-gradient(27deg, rgba(235,255,37,0.5326331216080182) 0%, rgba(110,233,242,0.921988863904937) 100%);
+background: -webkit-linear-gradient(27deg, rgba(235,255,37,0.5326331216080182) 0%, rgba(110,233,242,0.921988863904937) 100%);
+background: linear-gradient(27deg, rgba(235,255,37,0.5326331216080182) 0%, rgba(110,233,242,0.921988863904937) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebff25",endColorstr="#6ee9f2",GradientType=1);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
 }
 
 code {
