@@ -6,7 +6,7 @@ import {  LoaderAnimation } from "./Loader.styled";
     <LoaderAnimation>
       <InfinitySpin 
         width='150'
-         color="#ba3b46"
+         color="#cdd832"
       />
     </LoaderAnimation>  
     )
