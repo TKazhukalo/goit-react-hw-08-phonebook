@@ -8,7 +8,8 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
-    isLoading:false,
+    isLoading: false,
+    error:null,
 }
 
 const authSlice = createSlice({
@@ -20,26 +21,43 @@ const authSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
+            state.error = null;
             //state.isLoading = false;
         },
         [register.rejected](state, action) {
-            
+            state.isLoading = false;
+            state.error = null;
+        },
+         [register.pending](state) {
+            state.isLoading = true;
         },
         [logIn.fulfilled](state, action) {
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedIn = true;
+            state.isLoading = false;
+            state.error = null;
+        },
+          [logIn.pending](state) {
+            state.isLoading = true;
+        },
+        [logIn.rejected](state, action) {
+            state.error = action.payload;
+            state.isLoading = false;
         },
         [logOut.fulfilled](state, action) {
             state.user = { name: null, email: null };
             state.token = null;
             state.isLoggedIn = false;
+            state.isLoading = false;
+            state.error = null;
         },
         [logOut.pending](state) {
             state.isLoading = true;
         },
         [logOut.rejected](state, action) {
             state.isLoading = false;
+            state.error = action.payload;
         },
         [refreshUser.pending](state) {
             state.isRefreshing = true;
@@ -48,6 +66,7 @@ const authSlice = createSlice({
             state.user = action.payload;
             state.isLoggedIn = true;
             state.isRefreshing = false;
+            state.error = null;
         },
         [refreshUser.rejected](state) {
             state.isRefreshing = false;
