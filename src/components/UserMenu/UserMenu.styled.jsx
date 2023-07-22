@@ -9,7 +9,7 @@ export const ContainerMenu = styled.div`
 `;
 export const ButtonMenu = styled.button`
     background-image: linear-gradient(to right, #c2e59c 0%, #64b3f4  51%, #c2e59c  100%);
-    margin: 10px;
+    margin:0 auto;
     padding: 15px 45px;
     text-align: center;
     text-transform: uppercase;

@@ -16,7 +16,7 @@ export const RegisterLabel = styled.label`
     
 `;
 export const RegisterInput = styled.input`
-    width: 260px;
+    width: 280px;
     padding: 12px 18px;
     border-radius: 4px;
     margin-top: 5px;

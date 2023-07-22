@@ -15,7 +15,7 @@ export const LabelForm = styled.label`
     font-size:16px;
 `;
 export const LoginInput = styled.input`
-    width: 260px;
+    width: 280px;
     padding: 12px 18px;
     margin-top: 5px;
     border-radius: 4px;
